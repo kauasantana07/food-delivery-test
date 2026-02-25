@@ -6,12 +6,12 @@ const PlaceOrder = () => {
   const { getTotalCartAmount } = useContext(StoreContext);
 
   return (
-    <form action="place-order">
+    <form className="place-order">
       <div className="place-order-left">
         <p className="title">Delivery Information</p>
         <div className="multi-fields">
           <input type="text" placeholder="First name" />
-          <input type="text" placeholder="last name" />
+          <input type="text" placeholder="Last name" />
         </div>
         <input type="email" placeholder="Email address" />
         <input type="text" placeholder="Street" />
@@ -36,19 +36,19 @@ const PlaceOrder = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery fee</p>
-              <p>${2}</p>
+              <p>${getTotalCartAmount()===0?0:2}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount() + 2}</b>
+              <b>${getTotalCartAmount()===0?0:getTotalCartAmount() + 2}</b>
             </div>
           </div>
           <button>PROCEED TO PAYMENT</button>
         </div>
       </div>
     </form>
-  )
+  );
 }
 
 export default PlaceOrder;
